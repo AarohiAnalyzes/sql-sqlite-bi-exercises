@@ -102,7 +102,6 @@ AND field10 = 40;
 -- starting with 'CBW'. This individual is therefore the most likely suspect.
 
 
-
 -- After discovering that Edward Ventura has an alibi, reassess the investigation.
 
 
@@ -118,7 +117,6 @@ Had red or brown hair
 Had a shoe size greater than 36
 Returned to the hotel at 19:30
 */
-
 SELECT *
 FROM dati
 WHERE field7 = "09:30:00"
@@ -135,7 +133,6 @@ The suspect retrieved boots from a car
 The license plate referred to Pisa or Pesaro
 The suitcase had the initials A.S.
 */
-
 SELECT *
 FROM dati
 WHERE field7 = "09:30:00"
@@ -144,6 +141,7 @@ AND (field9 = "rossi" OR field9 = "castani")
 AND field10 > 36
 AND field8 = "19:30:00"
 AND (field6 = "Pisa" OR field6 = "Pesaro");
+
 
 
 
