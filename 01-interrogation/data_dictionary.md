@@ -16,8 +16,6 @@ original Italian dataset description.
 | field8    | ritorno                | Time the person returned to the hotel     |
 | field9    | capelli                | Hair color                                |
 | field10   | numero_scarpe          | Shoe size                                 |
-|-----------|------------------------|-------------------------------------------|
-
 ## Notes
 - The dataset was provided with generic column names (`field1`, `field2`, …).
 - Column semantics were inferred from the exercise description and data values.
