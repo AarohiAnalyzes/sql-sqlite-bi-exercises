@@ -7,9 +7,9 @@ The `librerie` database is designed for a **Bookstore/Library Management System*
 ### How Tables are Connected
 The schema uses a relational structure where data is distributed across specialized tables to avoid redundancy:
 
-* **One-to-Many Relationships:** * Each book belongs to one **Publisher** (`editori`) and has one **Format** (`formato`).
-* **Many-to-Many Relationships:** * **Authors & Books:** Linked via the `hascritto` junction table (since one book can have multiple authors, and one author can write multiple books).
-    * **Stores & Books:** Linked via the `scorte` junction table to track stock levels (`num_copie_disponibili`) across different locations.
+* **One-to-Many Relationships:** - Each book belongs to one **Publisher** (`editori`) and has one **Format** (`formato`).
+* **Many-to-Many Relationships:** - **Authors & Books:** Linked via the `hascritto` junction table (since one book can have multiple authors, and one author can write multiple books).
+     **Stores & Books:** Linked via the `scorte` junction table to track stock levels (`num_copie_disponibili`) across different locations.
 
 ---
 
