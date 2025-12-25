@@ -1,5 +1,5 @@
 -- Question 1 : Initial Inspection
--- Question 1 : View the list of all suspects
+-- View the list of all suspects
 SELECT * FROM dati;
 
 -- Question 2 : Informant Clues
@@ -141,6 +141,7 @@ AND (field9 = "rossi" OR field9 = "castani")
 AND field10 > 36
 AND field8 = "19:30:00"
 AND (field6 = "Pisa" OR field6 = "Pesaro");
+
 
 
 
