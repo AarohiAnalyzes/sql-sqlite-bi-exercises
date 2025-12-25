@@ -4,7 +4,7 @@ The dataset columns are stored using generic field names (`field1`, `field2`, â€
 This document explains the semantic meaning of each attribute based on the
 original Italian dataset description.
 
-|Field Name | Italian Meaning        | English Meaning                           |
+|Field Name | Italian Column         | English Meaning                           |
 |-----------|------------------------|-------------------------------------------|
 | field1    | id                     | Unique identifier of the record           |
 | field2    | data                   | Date of arrival at the hotel              |
