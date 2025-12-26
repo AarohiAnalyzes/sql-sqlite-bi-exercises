@@ -1,0 +1,101 @@
+-- Part:2 Basic Data Retrieval
+
+--3. Display the complete contents of the book table.
+SELECT *
+FROM libri;
+
+--4. Display only the title, type, and price attributes of the book table.
+SELECT titolo, tipo, prezzo
+FROM libri;
+
+--5. Display the title and price of books costing less than 10 euros. (Result: 17 tuples) l.
+SELECT titolo, prezzo
+FROM libri
+WHERE prezzo < 10;
+
+--6. Display all information for Computer Science books (where type is 'CS'). (Result: 4 tuples).
+SELECT *
+FROM libri
+WHERE tipo = "CS";
+
+--7. Display the information for both Computer Science ('CS') and Fiction ('FIC') books using a single query. (Result: 10 tuples).
+SELECT *
+FROM libri
+WHERE tipo IN ('CS','FIC');
+
+-- Part 3: Relational Joins and Analysis
+
+-- 8. Book & Publisher: Display the title and publisher_name for each book.
+-- Task: Compare the result of this query to one without a WHERE or JOIN clause. How do you explain the difference in the number of rows? (Result: 29 tuples).
+-- Without the JOIN condition (ON ...), SQL produces a Cartesian product: every book paired with every publisher. That explodes the number of rows. With the JOIN condition, you only keep the meaningful matches (each book with its publisher), so you get the expected 29 rows
+SELECT libri.titolo, editori.nome
+FROM libri
+JOIN editori 
+ON libri.codice_editore = editori.codice;
+
+
+-- 9. Book & Format: Display the title, price, and format_description for each book. (Note: Description is found in the format table. Result: 29 tuples).
+SELECT libri.titolo, libri.prezzo, formato.descrizione
+FROM libri
+JOIN formato
+ON libri.cod_format = formato.codice;
+
+-- 10. Three-Table Join: Display the title of the book and the last name of the author who wrote it.
+SELECT libri.titolo, autori.nome
+FROM libri
+JOIN hascritto
+ON libri.codice = hascritto.codice_libro
+JOIN autori
+ON hascritto.codice_autore = autori.codice_autore;
+
+-- Analysis: This query returns 33 tuples even though there are only 29 books. Why does this happen?
+-- This happens because of the many-to-many relationship between libri and autori via hascritto.
+-- Some books have more than one author.Each (book, author) pair becomes a separate row in the join result. 
+-- So you can have more rows than books (33 rows even though there are 29 books).
+
+-- 11. Specific Author: Repeat the previous query, but only for books written by Kafka. (Result: 2 tuples).
+SELECT libri.titolo, autori.nome, autori.cognome
+FROM libri
+JOIN hascritto
+ON libri.codice = hascritto.codice_libro
+JOIN autori
+ON hascritto.codice_autore = autori.codice_autore
+AND autori.cognome = 'Kafka';
+
+-- 12.Multiple Authors: Display books written by either Kafka or Agatha Christie. (Result: 4 tuples).
+SELECT libri.titolo, autori.cognome
+FROM libri
+JOIN hascritto
+ON libri.codice = hascritto.codice_libro
+JOIN autori
+ON hascritto.codice_autore = autori.codice_autore
+AND (autori.cognome = 'Kafka' OR autori.cognome = 'Christie');
+
+-- 13. Store Inventory: Find the name and location of bookstores where the book 'dBASE Programming' is currently for sale. (Result: 1 tuple).
+
+/* just to check the attributes and values
+
+SELECT * 
+FROM negozi;
+
+SELECT *
+FROM scorte;
+*/
+
+SELECT libri.titolo, libri.prezzo, negozi.nome, negozi.sede
+FROM libri
+JOIN scorte
+ON libri.codice = scorte.codice_libro
+JOIN negozi
+ON scorte.codice_negozio = negozi.codice_negozio
+AND libri.titolo = 'dBASE Programming';
+
+
+
+
+
+
+
+
+
+
